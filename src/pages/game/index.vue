@@ -206,6 +206,7 @@ ul {
   right: 0;
   background-color: #f2f2f5;
   color: #ddb285;
+  height: 588px;
 }
 
 .nav-bar {

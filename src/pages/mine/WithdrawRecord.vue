@@ -1,11 +1,8 @@
 <template>
   <div class="container page">
     <div class="header">
-      <van-nav-bar title="兑换记录" class="nav-bar">
-        <template #left>
-          <van-icon name="arrow-left" color="#fff" @click="back()"/>
-        </template>
-      </van-nav-bar>
+      <van-nav-bar title="兑换记录" class="nav-bar"></van-nav-bar>
+      <div class="rt-pos" @click="$router.back()"></div>
     </div>
     <div class="main">
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
@@ -97,12 +94,37 @@ export default {
   font-size: 14px;
   color: #f3c7a2;
 }
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
 .nav-bar {
   background: #212121;
   color: #f3c7a2 !important;
 }
 .page{
   background: #282828;
+  position: relative;
+  width: 105%;
+  height: 667px;
+  margin-top: -10px;
+  margin-left: -10px;
+}
+
+::v-deep .van-nav-bar__title{
+  color: #ddb285;
+  font-size: 16px;
+  line-height: 47px;
+  height: 35px;
 }
 
 ::v-deep .van-pull-refresh__track .van-pull-refresh__head *{

@@ -1,13 +1,11 @@
 <template>
   <div class="container page">
     <van-nav-bar :title="$t('修改真实姓名')" class="nav-bar">
-      <template #left>
-        <van-icon name="arrow-left" color="#fff" @click="back()"/>
-      </template>
       <template #right>
         <span class="nav-right" @click="save()">{{ $t('保存') }}</span>
       </template>
     </van-nav-bar>
+    <div class="rt-pos" @click="$router.back()"></div>
     <van-cell-group>
       <van-field v-model="name" :readonly="userInfo.name !== ''" :label="$t('姓名')" :placeholder="$t('请输入真实姓名')" />
     </van-cell-group>
@@ -86,20 +84,31 @@ export default {
   line-height: 100px;
 }
 
-
-
 .page{
   position: absolute!important;
   top: 0;
   left: 0;
   right: 0;
   background-color: #282828;
-  height: 589px
+  height: 667px;
+}
+
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
 }
 
 .van-cell {
   font-size: 14px;
-  line-height: 80px;
+  line-height: 45px;
 }
 .container p{
   padding: 0 15px;
@@ -108,9 +117,18 @@ export default {
   color: #dc2037;
 }
 
-.van-nav-bar__right {
-  width: 50px;
-  float: right;
+::v-deep .van-nav-bar__content {
+  line-height: 46px;
+  background-color: #212121;
+  color: #ddb285;
+}
+
+::v-deep .van-nav-bar__title{
+  color: #ddb285;
+}
+
+::v-deep .van-nav-bar__right {
+  margin-left: 300px;
 }
 
 ::v-deep .van-cell-group,::v-deep .van-cell{

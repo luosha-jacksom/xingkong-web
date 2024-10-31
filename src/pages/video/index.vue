@@ -198,12 +198,13 @@ export default {
 }
 
 .container {
-  height: 667px;
-  width: 100%;
-
+  height: 670px;
+  width: 105%;
   background-color: #282828;
   position: relative;
   // padding-bottom: 120px;
+  margin-top: -10px;
+  margin-left: -10px;
 }
 
 .rt-pos {
@@ -266,7 +267,7 @@ export default {
 
 .container .live-content .movie-item {
   width: 45%;
-  height: 120px;
+  height: 130px;
   background-color: aqua;
   float: left;
   margin-top: 10px;
@@ -282,5 +283,6 @@ export default {
 .container .live-content .movie-item span {
   display: block;
   font-size: 12px;
+  line-height: 12px;
 }
 </style>

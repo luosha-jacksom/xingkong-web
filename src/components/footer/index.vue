@@ -109,7 +109,6 @@
     width: 100%;
     height: @tabbar-height;
     position: fixed;
-    z-index: 100px;
   }
   .van-tabbar {
     height: @tabbar-height;

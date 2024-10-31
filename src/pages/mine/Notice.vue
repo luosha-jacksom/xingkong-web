@@ -1,11 +1,8 @@
 <template>
   <div class="container page">
     <div class="header">
-      <van-nav-bar :title="$t('系统公告')" class="nav-bar">
-        <template #left>
-          <van-icon name="arrow-left" color="#fff" @click="back()"/>
-        </template>
-      </van-nav-bar>
+      <van-nav-bar :title="$t('系统公告')" class="nav-bar"></van-nav-bar>
+      <div class="rt-pos" @click="$router.back()"></div>
     </div>
     <div class="content">
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
@@ -58,17 +55,42 @@ export default {
 </script>
 
 <style lang='less' scoped>
+
+.page{
+  background: #282828;
+  color: #e6b98a;
+  height: 667px;
+  margin-top: -10px;
+  width: 105%;
+  margin-left: -10px;
+  position: relative;
+}
+
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
 // @import "../../assets/css/base.css";
 ::v-deep .van-pull-refresh__track .van-pull-refresh__head *{
   color: #ddb285;
   font-size: 35px;
 }
 ::v-deep .van-nav-bar__content {
-  height: 100px;
   background-color: #282828;
 }
 ::v-deep .van-nav-bar__title{
   color: #ddb285;
+  height: 35px;
+  line-height: 35px;
 }
 ::v-deep .van-icon-arrow-left:before{
   color: #ddb285;

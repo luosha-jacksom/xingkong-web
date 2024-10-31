@@ -1,30 +1,22 @@
 <template>
   <div class="bg-container page">
-<!--      <img class="bg-img" src="img/login/login-bg.png">-->
       <div class="bg-wrapper">
         <div class="login">
           <van-nav-bar class="nav-bar">
-            <template #left>
-              <van-icon name="arrow-left" color="#fff" @click="back()"/>
-            </template>
           </van-nav-bar>
+          <div class="rt-pos" @click="$router.back()"></div>
           <div class="wrapper">
-            <div class="logo-container">
-              <div class="logo-wrapper">
-                <img class="logo-img" :src="this.$store.getters.getBaseInfo.ico !==undefined ?this.$store.getters.getBaseInfo.ico:'/img/null.png'">
-              </div>
-            </div>
-            <div class="title">登录</div>
+            <div class="title">{{ $t('欢迎来到星空') }}</div>
             <div class="loginForm">
-              <!-- <input type="text" class="input" v-model="username" placeholder="请输入用户名">
-              <input type="password" class="input" v-model="password" placeholder="请输入密码"> -->
-              <van-field v-model="username"
+              <input v-model="username" :placeholder="$t('请输入用户名')" />
+              <input v-model="password" :placeholder="$t('请输入密码')" />
+              <!-- <van-field v-model="username"  
                clearable 
                input-align="center"
                class="input"  
-               placeholder="请输入用户名" />
+               placeholder="请输入用户名" /> -->
 
-              <van-field
+              <!-- <van-field
                   v-model="password"
                   :type="passwordType"
                   input-align="center"
@@ -33,10 +25,10 @@
                 <template slot="right-icon">
                   <van-icon :name=" passwordType === 'password' ? 'closed-eye':'eye-o'" @click="switchPasswordType"/>
                 </template>
-              </van-field>
-              <div class="reset-text">
+              </van-field> -->
+              <!-- <div class="reset-text">
                 <span>忘记密码？</span>
-              </div>
+              </div> -->
               <div @click="toRegister()" class="register-text">
                 <span>没有账户？马上注册</span>
               </div>
@@ -122,6 +114,28 @@ export default {
 <style lang='less' scoped>
 // @import "../../assets/css/base.css";
 
+.page {
+  height: 667px;
+  background: #282828;
+  width: 105%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: relative;
+}
+
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ddb285;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
 .login{
   height: 100%;
 }
@@ -155,27 +169,29 @@ export default {
   text-align: center;
   font-size: 45px;
   font-weight: 700;
-  color: #fff;
+  color: #ddb285;;
   letter-spacing: 5px;
+  margin-top: 100px;
 }
 .login .wrapper .loginForm{
   padding: 60px;
 }
-.login .wrapper .loginForm .input{
-  padding: 10px 20px;
-  margin-top: 40px;
-  border-radius: 50px;
-  text-align: center;
-  line-height: 80px;
-  font-size: 30px;
-  color: #4e4e4e;
-}
+
 ::v-deep .van-field__right-icon .van-icon {
   font-size: 50px;
 }
 ::v-deep .van-icon {
   font-size: 50px;
 }
+
+::v-deep input {
+  height: 30px;
+  width: 186px;
+  outline: none;
+  text-indent: 12px;
+  margin-top: 10px;
+}
+
 .bg-container .bg-wrapper{
   background: #212121;
 }
@@ -186,32 +202,29 @@ export default {
   justify-content: flex-end;
 }
 .login .wrapper .loginForm .reset-text span{
-  color: #fff;
+  color: #ddb285;
   font-size: 25px;
   font-weight: 500;
   line-height: 15px;
 }
 .login .wrapper .loginForm .register-text{
-  margin: 10px 0;
+  margin: 33px 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .login .wrapper .loginForm .register-text span{
-  color: #fff;
-  font-size: 25px;
+  color: #ddb285;
+  font-size: 20px;
   font-weight: 500;
   line-height: 20px;
 }
-.login .wrapper .loginForm .active{
-
-}
 .login .wrapper .loginForm .login-btn{
   margin-top: 85px;
-  width: 100%;
-  height: 100px;
+  width: 77%;
+  height: 53px;
   border-radius: 50px;
-  color: #fff;
+  color: #ddb285;
   background-color: #7e5678;
   font-size: 30px;
   font-weight: bolder;

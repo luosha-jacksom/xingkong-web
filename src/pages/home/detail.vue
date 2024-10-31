@@ -8,7 +8,7 @@
       <swiper-slide class="slide"><img src="https://www-stream.2345cdn.net/upload/20241009/acZY9twM-20241009170928.png" alt=""></swiper-slide>
     </swiper>
     <div class="radiusArrow" @click="$router.back()">
-      <div class="rt_pos"></div>
+      <div class="rt-pos"></div>
     </div>
     <div class="content">
       <div class="notice">
@@ -136,7 +136,7 @@ body {
   padding-left: 10px;
 }
 
-.rt_pos {
+.rt-pos {
   content: "";
   display: inline-block;
   height: 20px;
@@ -145,7 +145,6 @@ body {
   border-color: #ccc;
   border-style: solid;
   transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
-
 }
 
 .content {

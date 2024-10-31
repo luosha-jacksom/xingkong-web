@@ -1,10 +1,7 @@
 <template>
   <div class="container page">
-      <van-nav-bar :title="$t('设置')" class="nav-bar">
-        <template #left>
-          <van-icon name="arrow-left" color="#fff" @click="back()"/>
-        </template>
-      </van-nav-bar>
+      <van-nav-bar :title="$t('设置')" class="nav-bar"></van-nav-bar>
+      <div class="rt-pos" @click="$router.back()"></div>
       <div class="items">
         <div class="item van-hairline--bottom" @click="toInfomation()">
           <div class="left">{{ $t('基本信息设置') }}</div>
@@ -87,10 +84,31 @@ export default {
 
 <style lang='less' scoped>
 // @import "../../assets/css/base.css";
+.page {
+  height: 677px;
+  background: #282828;
+  width: 105%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: relative;
+}
+
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
 
 ::v-deep .van-nav-bar__content {
-  height: 100px;
-  line-height: 100px;
+  height: 35px;
+  line-height: 35px;
   background-color: #282828;
   color: #ddb285;
 }
@@ -102,7 +120,7 @@ export default {
   padding: 0 25px;
 }
 .container .items .item{
-  padding: 30px 0;
+  padding: 18px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -113,7 +131,7 @@ export default {
   border-bottom-width: 3px;
 }
 .container .sign-out{
-  margin: 500px 20px 0;
+  margin: 369px 20px 0;
   height: 100px;
   line-height: 100px;
   border-radius: 50px;
@@ -123,9 +141,7 @@ export default {
   border: none;
   background: #212121;
 }
-.page{
-  background: #212121;
-}
+
 .container  .item .desc{
   font-size: 14px;
   font-weight: 700;

@@ -1,10 +1,7 @@
 <template>
   <div class="container page">
-    <van-nav-bar :title="$t('性别修改')" class="nav-bar">
-      <template #left>
-        <van-icon name="arrow-left" color="#fff" @click="back()"/>
-      </template>
-    </van-nav-bar>
+    <van-nav-bar :title="$t('性别修改')" class="nav-bar"></van-nav-bar>
+    <div class="rt-pos" @click="$router.back()"></div>
     <div class="sex">
         <van-radio-group v-model="radio">
           <div class="item van-hairline--bottom" @click="chooesSex(1)">
@@ -74,9 +71,25 @@ export default {
 <style lang='less' scoped>
 // @import "../../assets/css/base.css";
 .page {
-  height: 590px;
+  height: 677px;
+  background: #282828;
+  width: 105%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: relative;
 }
-
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
 .container .sex{
   background-color: #282828;
   padding: 0 40px;
@@ -86,11 +99,15 @@ export default {
 .container .sex .item{
   font-size: 14px;
   line-height: 50px;
-  padding: 30px 0;
+  padding: 8px 0;
 }
-.van-nav-bar__title {
+::v-deep .van-nav-bar__content {
+  line-height: 46px;
+  background-color: #212121;
   color: #ddb285;
-  background-color: #282828;
+}
+::v-deep .van-nav-bar__title{
+  color: #ddb285;
 }
 
 ::v-deep .van-radio__label {

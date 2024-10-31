@@ -1,10 +1,7 @@
 <template>
   <div class="container page">
-    <van-nav-bar title="打赏记录" class="nav-bar">
-      <template #left>
-        <van-icon name="arrow-left" color="#fff" @click="back()"/>
-      </template>
-    </van-nav-bar>
+    <van-nav-bar title="打赏记录" class="nav-bar"></van-nav-bar>
+    <div class="rt-pos" @click="$router.back()"></div>
     <div class="main">
       <van-pull-refresh v-model="isLoading" @refresh="onRefresh">
         <van-empty v-if="list.length === 0" :description="$t('数据为空')" />
@@ -120,14 +117,36 @@ export default {
 
 <style lang='less' scoped>
 // @import "../../assets/css/base.css";
+.page{
+  background: #282828;
+  color: #e6b98a;
+  height: 667px;
+  margin-top: -10px;
+  width: 105%;
+  margin-left: -10px;
+  position: relative;
+}
+
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
 ::v-deep .van-pull-refresh__track .van-pull-refresh__head *{
   color: #ddb285;
   font-size: 14px;
 }
 ::v-deep .van-nav-bar__content {
-  height: 100px;
   background-color: #282828;
-  line-height: 100px;
+  line-height: 38px;
 }
 ::v-deep .van-loading__text {
   color: #ddb285;
@@ -145,7 +164,7 @@ export default {
   margin: 30px 10px;
   background: #282828;
   border-radius: 10px;
-  line-height: 60px;
+  line-height: 40px;
 }
 
 .item_list .topInfo .totalMoney{
@@ -177,7 +196,7 @@ export default {
 }
 .item_list  .period-number{
   margin-left: 50px;
-  margin-right: 10px;
+  margin-right: -26px;
   height: 50px;
   line-height: 60px;
   font-size: 14px;
@@ -190,7 +209,8 @@ export default {
 .recent {
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 50px;
+  position: relative;
 }
 .kuaisan-ball .left{
   justify-content: flex-start;
@@ -199,6 +219,8 @@ export default {
   flex: 1;
   display: flex;
   align-items: center;
+  position: absolute;
+  right: 18px;
 }
 
 .kuaisan-ball .res-img{
@@ -212,8 +234,8 @@ export default {
   color: #ddb285;
 }
 .kuaisan-ball .res-des.middle{
-  width: 15%;
   font-size: 14px;
+  margin-right: 10px;
 }
 .titleContent{
   display: flex;

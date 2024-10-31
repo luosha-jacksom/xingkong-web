@@ -6,7 +6,7 @@
                 <li v-for="item in list" :key="item.id" @click="toLink(item)">
                     <div class="info-header">
                         <div class="header-left-logo">
-                            <img src="/img/footer/reservec.jpg" />
+                            <img src="/img/footer/1.png" />
                             <icon />
                         </div>>
                         <div class="header-right-info">
@@ -18,7 +18,7 @@
                     </div>
                     <div class="info-body">
                         <div class="body-left-img">
-                            <img src="#">
+                            <img src="/img/footer/1.png">
                         </div>
                         <div class="body-right-info">
                             <span class="signature">签名：勿扰</span>
@@ -187,7 +187,7 @@
     padding: 0px;
   }
   .container {
-    height: 667px;
+    height: 590px;
     width: 105%;
     background-color: #282828;
     margin-top: -10px;
@@ -209,7 +209,7 @@
     width: 100%;
   }
   .container .live-content ul li {
-    width: 98%;
+    width: 94%;
     height: 240px;
     display: block;
     float: left;
@@ -234,6 +234,7 @@
 
   .container .live-content ul li .info-header .header-left-logo img {
     height: 70px;
+    border-radius: 50%;
   }
   .container .live-content ul li .info-header .header-left-logo icon {
     width: 20px;
@@ -241,8 +242,8 @@
     display: inline-block;
     background: url(/public/favicon.ico) no-repeat;
     position: absolute;
-    bottom: 38px;
-    right: 20px;
+    bottom: 27px;
+    right: 17px;
     z-index: 2; 
   }
 
@@ -270,12 +271,14 @@
 
   .container .live-content ul li .info-body .body-left-img {
     width: 35%;
-    height: 100%;
+    height: 69%;
     float: left;
   }
   
   .container .live-content ul li .info-body .body-left-img img {
     height: 100%;
+    margin: 6px;
+    border-radius: 15px;
   }
 
   .container .live-content ul li .info-body .body-right-info {
@@ -286,6 +289,15 @@
   
   .container .live-content ul li .info-body .body-right-info span {
     display: block;
+    width: 38%;
+    height: 16px;
+    line-height: 16px;
+    font-size: 14px;
+    margin: 5px 10px;
+  }
+
+  .container .live-content ul li .info-body .body-right-info span.personality {
+    display: block;
     float: left;
     width: 38%;
     height: 16px;
@@ -294,6 +306,15 @@
     border-radius: 90px;
     margin: 5px 10px;
     background-color: #ff6056; 
+  }
+
+  .container .live-content ul li .info-body .body-right-info span.get-phone {
+    width: 58%;
+    border-radius: 90px;
+    margin: 5px 41px;
+    float: left;
+    background-image: linear-gradient(to left, #7A88FF, #7AFFAF);
+
   }
   </style>
   

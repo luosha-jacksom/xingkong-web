@@ -10,14 +10,18 @@
 <!--             </template>-->
 <!--           </van-nav-bar>-->
            <div class="user-wrapper" @click="doLogin()">
-             <van-image round class="user_img" :src="this.userInfo.header_img">
+            <img class="user_img" :src="this.userInfo.header_img"/>
+             <!-- <van-image round class="user_img" :src="this.userInfo.header_img">
                <template v-slot:loading>
                  <van-loading type="spinner"/>
                </template>
-             </van-image>
+             </van-image> -->
              <div class="login-content">
                <p class="login-btn" >{{this.userInfo.username}}</p>
-               <p style="margin-top: 10px;font-size:14px;"> 用户名: {{ this.$store.state.baseInfo.name }}传媒号：{{ this.userInfo.id }}</p>
+               <p style="margin-top: 10px;font-size:14px;"> 
+                <span>用户名:</span> {{ this.$store.state.baseInfo.name }}
+                <br/>
+                <span>传媒号:</span> {{ this.userInfo.id }}</p>
              </div>
            </div>
          </div>
@@ -40,14 +44,14 @@
                </template>
              </van-cell>
              <div style="margin-top: 15px">
-               <van-cell is-link @click="toService()">
+               <!-- <van-cell is-link @click="toService()">
                  <template>
                    <div style="color:#fff;font-size: 14px" class="icons">
                      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LmRhYmFjYmIsIDIwMjEvMDQvMTQtMDA6Mzk6NDQgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24gcmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMi40IChNYWNpbnRvc2gpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkM0RjcxODkwOTQ3RjExRUNBN0QwRkE2RDJCODUzQzNGIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkM0RjcxODkxOTQ3RjExRUNBN0QwRkE2RDJCODUzQzNGIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QzRGNzE4OEU5NDdGMTFFQ0E3RDBGQTZEMkI4NTNDM0YiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QzRGNzE4OEY5NDdGMTFFQ0E3RDBGQTZEMkI4NTNDM0YiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7T0wwkAAAFrElEQVR42uyaC2wVRRSGbwUsGgtWkGtRA1JtitCAUdOkxBdoTURRCaQUrBiiQaSGghZBUdQoIYAoIlqNig/kYZUiURSNCEqLtoqlWBGhBpWHBhsUpdA2cP2P/W8yDrPPu3tJGs7Nl92ZnZm9Z2fm7JwzmxKLxSLtSU6JtDNpdwp1PC6n/p1E2+wELgEDQD+QDk4HLeCg3AH8CL4F+xPWoN8IB4X8yw1gDLgKnOuifBPYCCrAq1Q4+B7yYSRuBg+Byz3Wk17LJzPAM2Ce15unOCvkuq0zQRkoMFz7E2wG34PfwSGQyuHXF+SA3kp56dG5YByYCD4LTCGo5KadK8EKcI6WvxIsB2s5X+zkCg7RQtCFeaLsOjAFPJ2sIXcLx70qH4MHwTce7v0FkeFaCh5Qrs0HvUBJ4grZl883KCPDZLGhbBY5G6SBI+AA+AnUgVaWawTTwGrwljIUJ4EO4N7EzLZ1D/XnUIrL32AIqNGG0WhwNci2ue9e1hMFyplXxXt8QEspUgx+AItczyl9iLXWLrOae/tAlOkW3nwH09eDx0Cuj2HfQOtWpuR9Aq7VHma98aU3sNB+pSAKGpgPokp6CNgBOoHXwEcg16KuE5ngBVAJcph3HdirlFllVd9x6SNlNHqBEiU9E2xkfh0Ya6jjhzywBYxgeqhy7UJwm6meC4WOewqzlHN5ao+DbgA3j2X77BUrZAqUg1tBLZitXJvH6x576P+/rqBQSRfwWM1rYf1WgiwwHbQwLwpG6iW99tAo5ak0AAy12FLQJ+CeMVHJ4wwl73anHnJ6sd6knJdyBV2YJE+gO5gO5hCRwZ79IUX7DiCP503gO7Ak4F6Qdg/bXJf5C+MTq2D6NPbco5zHrhUaB3aCdKZrwDDQP2CFxBxnxdrEqswEUKek5SHD0sbqQYabITcSh1e0bHHY8kIYVn+A3WAy3QeT3M9ViS5RLmBHOSn0pKFyl5DmySoeF4CpoKdFuTSL/Gvc9FD3JE36tZrfM4Wuh1d331Gho0lQZjM9XVVWcAhleGin1Y1ROBbSe+UfWqip4FLQbCjzstd2w4gpmCQe3dlK36eW7vgBh3qvg4eDDZIc86XQFlDJ41Yqc9BHO+JKbKMrfsKiPhIXWBrg/KoKWqEUjyGs1QEbjF88lD3VjUKpLhv7KgRlRP7yUPawG4UaXb5I14dk0o/4eDHbmu2ZLk1mtxDNu5reT1PfquVXg1I3Cr0JisFvSoN3GHyRQSEpdFRLbwJzQV+whnmfM4ZxyK2VW8QAusTIfmZgPb7mSleinOeDXwMecvpwf0Ix6Y08L/fjD4mfso0+SzxvosGjTaQ3BhjysjX3oobnaaCI5+s9RH1s/8AysE5Jj7co19uhnZ4MghQZrg1V5tIYJb+Yx510NgNb+gxjOLcHyAQ3gve1MmNBEV0CWTk0M7CfyejqBJbTfaxcho8jbLdJ+Z+PaEMwsJWCTMRB4GvQlc5gVCszm3Hwd21WyTnKH47LciVevkFb43UGe3juK6Zgh3T7QM6xHuAN7XozreAklo3n7wILWWe7VmcJh2oBWKzk3wNG83y499V2xPVabhefssSk7+TTvlsr8yzJ4I5dg6GdVFpV2aa5TNuSKVAC9bLdUu1jLefJxIozeBf3h+TGH4L3DOX22bTRmXMyXXPYJnOfSOQ5JZQV+mo7/l4ot4kJOK3dZilpefc9BYYzPUfbDEuKQuq+jy4SmDwDfEmLZyXn0fpNU+a27Lc+H9aGl1cRy/dppO1bhbiMBy8p6QtoxvPpV8VFLNx9Hrc4fW1JepEyTRmRF8FFoA+42LDLt4HLq4oT6bFayWCbwKEqEnNYA96OtH1dkpD43dZ3I9sj5o8xFjBospvxgz1Brmw7hjeF/tvFrtLyZP6UREKUMIfcJs4hedmeFWn7rqcs7AhmyskPAE8qlFz5V4ABAEdxwO+9QgRZAAAAAElFTkSuQmCC" alt="">
                      <span>我的客服</span>
                    </div>
                  </template>
-               </van-cell>
+               </van-cell> -->
 
 <!--               <van-cell  is-link @click="doPay()" >-->
 <!--                 <template>-->
@@ -75,14 +79,14 @@
                  </template>
                </van-cell>
 
-               <van-cell  is-link  @click="$router.push({path:'/Personalreport'});"  >
+               <!-- <van-cell  is-link  @click="$router.push({path:'/Personalreport'});"  >
                  <template>
                    <div style="color:#fff;font-size: 14px" class="icons">
                      <img data-v-42038ca9="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADQAAAA0CAYAAADFeBvrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyVpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDJBNkQzNDc5ODczMTFFQzkzRDVEMUZDRTE1NzVFRjUiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDJBNkQzNDg5ODczMTFFQzkzRDVEMUZDRTE1NzVFRjUiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0MkE2RDM0NTk4NzMxMUVDOTNENUQxRkNFMTU3NUVGNSIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0MkE2RDM0Njk4NzMxMUVDOTNENUQxRkNFMTU3NUVGNSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgYeaPUAAAKxSURBVHjaYvz//z/DcAJMDMMMjHpo1EOjHhr1EApgwSf57/IqEGUHxDlALAzEf4CYXuU8I9R9b4F4AhAfg8eCbhh5HgLWUVpA6uAgCPhQINYA4puUJrmIQZSaQihOcsAYGkx5jJkaHvo9iDz0mwoeGmal3FBsuI56CA28JTazoldxQCw0mDx0G4j9gPgpmR76C8SyQLwZiJXo6KF/uKQeAPENCu2+BsSP6OwhnDHkCsRLoDFFLlAHYgf6tuXw56Ho0VJuwD30b9gV2/+GWX8If5JbAG3OEyq2QUU0qBsSO5iT3C4gTiTRLhkgdhyshYIKEOsD8X1CZkB7ucrUrm+oneRAjrsAxJ+ITHJ8Q6VQ4KNjfv9HyzxEK3AdiM8C8R1oUpUHYj0gNofmwSFTsW4F4h4gPoBD3p4BMgpE02KbWiANiGejiXEAMSsQf4byD1IpD9HcQ95AvA3K5gHibGi3RAXqtmdAvAOIZxHbEB7IlkIpkmdsgHgFEEujqQF1AnWAuIgBMtg5fbDG0E1ongEBXSA+jCYPyksvGBDjgqDhtGnQkm4mPoOZCHmIRrgVib0Ji3w7EEdiEZ8BxHKDLYZ+AfEmKDsAiBWwqAGNo0vi0F8OzWuDxkOguuYjlB2Ip3WBK/W4URBDNMk/z5DY8jjUCEEHYBShFSwDNM+F44m5AYshZDtxDe8WQD11F6lClUCKvUHlIeRWN2jkyAXHAEorDv33yC7laASUkZLaYjL0r6Ck2GalUbEdA6VPAfEOEvR9AOJJlMTQXxq2EmB2h0LzCjHAHYi/U+Kh5TTyED8QnwJiLiD+AsSGQLwOj3pQl8IEqof8pg8001oAcT601PlDRU+Bil8zaDMH1KoOBmJLaGWrDcRsDJAh5x0EPIsCGEcXL416aNRDox4a9dBQAgABBgCNpqddKfOcMwAAAABJRU5ErkJggg==" alt="">
                      <span>个人报表</span>
                    </div>
                  </template>
-               </van-cell>
+               </van-cell> -->
                <van-cell  is-link  @click="exit()"  >
                  <template>
                    <div style="color:#fff;font-size: 14px" class="icons">
@@ -368,9 +372,14 @@ export default {
   background: #282828;
 
 }
-.mine .user_img{
-  height: 130px;
-  width: 130px;
+.user_img{
+  height: 95px;
+  border-radius: 50%;
+}
+
+.van-image__img {
+  height: 35px;
+  width: 35px;
 }
 ::v-deep .van-loading__spinner {
   height: 50px;
@@ -385,8 +394,8 @@ export default {
 }
 .mine  .header .user-wrapper .login-content .login-btn{
   display: inline-block;
-  font-size: 30px;
-  line-height: 10px;
+  font-size: 18px;
+  line-height: 14px;
   color: #fff;
 }
 .mine .header .user-wrapper .login-content .login-label{

@@ -1,15 +1,12 @@
 <template>
   <div class="container page">
-    <van-nav-bar title="基本信息" class="nav-bar">
-      <template #left>
-        <van-icon name="arrow-left" color="#fff" @click="back()"/>
-      </template>
-    </van-nav-bar>
+    <van-nav-bar title="基本信息" class="nav-bar"></van-nav-bar>
+    <div class="rt-pos" @click="$router.back()"></div>
     <div class="main-content">
         <div @click="openHerderImg()" class="item van-hairline--bottom">
           <div class="left">{{ $t('头像') }}</div>
           <div class="right">
-            <img  :src="this.userInfo.header_img">
+            <img :src="this.userInfo.header_img">
             <van-icon name="arrow" />
           </div>
         </div>
@@ -21,13 +18,19 @@
                   <div class="btnok" @click="check()">{{ $t('确定') }}</div>
                 </div>
                 <div class="content">
-                  <van-image
+                  <img v-for="(item,index) in 6" 
+                    :key="index" 
+                    :src="'/img/footer/'+item+'.png'" 
+                    :class="{ 'choose': isActive ===  '/img/footer/'+item+'.png'}"
+                    @click="select_header_img('/img/footer/'+item+'.png')"
+                    />
+                  <!-- <van-image
                       round
-                      v-for="(item,index) in 20" :key="index"
-                      @click="select_header_img('http://20.24.83.251:9000/lvs/mihuan/'+item+'.png')"
-                      :class="{ 'choose': isActive ===  'http://20.24.83.251:9000/lvs/mihuan/'+item+'.png'}"
-                      :src="'http://20.24.83.251:9000/lvs/mihuan/'+item+'.png'"
-                  />
+                      v-for="(item,index) in 6" :key="index"
+                      @click="select_header_img('/img/footer/'+item+'.png')"
+                      :class="{ 'choose': isActive ===  '/img/footer/'+item+'.png'}"
+                      :src="'/img/footer/'+item+'.png'"
+                  /> -->
                 </div>
             </div>
         </van-popup>
@@ -49,6 +52,13 @@
         <div class="left">{{ $t('绑定信息') }}</div>
         <div class="right">
           <span class="desc">{{this.isBank ? $t("已绑定") : $t('无')}}</span>
+          <van-icon name="arrow" />
+        </div>
+      </div>
+      <div class="item van-hairline--bottom" @click="toSetPhone()">
+        <div class="left">{{ $t('手机号码') }}</div>
+        <div class="right">
+          <span class="desc">{{this.userInfo.phone ? this.userInfo.phone :'未设置'}}</span>
           <van-icon name="arrow" />
         </div>
       </div>
@@ -150,10 +160,28 @@ export default {
 }
 .page{
   background: #282828;
-  height: 580px;
+  height: 677px;
+  width: 105%;
+  margin-left: -10px;
+  margin-top: -10px;
+  position: relative;
 }
+
+.rt-pos {
+  display: inline-block;
+  height: 12px;
+  width: 12px;
+  border-width: 0 0 5px 5px;
+  border-color: #ccc;
+  border-style: solid;
+  transform: matrix(0.71, 0.71, -.71, 0.71, 0, 0);
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
 .container .main-content .item{
-  padding: 30px 0;
+  padding: 18px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -191,12 +219,6 @@ export default {
   font-size: 14px;
 }
 
-.avatarbox .content .van-image{
-  width: 105px;
-  height: 105px;
-  margin: 2.5%;
-  border-radius: 50%;
-}
 .avatarbox .content{
   padding-bottom: 10px;
   height: 100%;
@@ -208,6 +230,14 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+.avatarbox .content img{
+  width: 105px;
+  height: 105px;
+  margin: 2.5%;
+  border-radius: 50%;
+}
+
 .avatarbox .content .choose{
   width: 95px;
   height: 95px;
@@ -215,8 +245,8 @@ export default {
 }
 
 ::v-deep .van-nav-bar__content {
-  height: 100px;
-  line-height: 100px;
+  height: 35px;
+  line-height: 35px;
   background-color: #212121;
 }
 ::v-deep [class*=van-hairline]::after{
